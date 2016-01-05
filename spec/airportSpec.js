@@ -46,4 +46,19 @@ describe('Airport', function(){
     }).toThrow('Stormy weather, no landing');
   });
 
+  it('if full planes should not be able to land', function(){
+    airport.land(plane);
+    // for (var i = 0; i = 20; i++){
+    //   airport.land(plane);}
+    expect(function(){
+      airport.land(plane);
+    }).toThrow('Airport is full, cannot land');
+  });
+
+  it('should be able to change airport capacity', function(){
+    airport.max_capacity(2);
+    expect(airport.CAPACITY).toEqual(2);
+  });
+
+
 });
