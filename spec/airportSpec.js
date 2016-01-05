@@ -33,7 +33,7 @@ describe('Airport', function(){
     airport.land(plane);
     spyOn(weather, 'stormy').and.returnValue(true);
     airport.conditions(weather);
-    expect(function (){
+    expect(function(){
       airport.take_off(plane);
     }).toThrow('Stormy weather, no flying');
   });
@@ -58,6 +58,12 @@ describe('Airport', function(){
   it('should be able to change airport capacity', function(){
     airport.max_capacity(2);
     expect(airport.CAPACITY).toEqual(2);
+  });
+
+  it('cannot release plane if not there', function(){
+    expect(function(){
+      airport.take_off(plane);
+    }).toThrow('No such plane!');
   });
 
 

@@ -12,9 +12,10 @@ Airport.prototype.land = function(plane){
 };
 
 Airport.prototype.take_off = function(plane){
+  if(this._identify(plane) === -1){throw('No such plane!')};
   if(!this.open){throw('Stormy weather, no flying')};
-    plane.fly();
-    this._removePlane(plane);
+  plane.fly();
+  this._removePlane(plane);
 };
 
 Airport.prototype.conditions = function(weather){
@@ -27,11 +28,15 @@ Airport.prototype.max_capacity = function(number){
 
 
 
+
+Airport.prototype._identify = function(plane){
+  return this.runway.indexOf(plane)
+};
+
 Airport.prototype._full = function(){
   return this.runway.length >= this.CAPACITY;
 };
 
 Airport.prototype._removePlane = function(plane){
-  var index = this.runway.indexOf(plane);
-  this.runway.splice(index,1);
+    this.runway.splice(this._identify(plane),1);
 }

@@ -1,5 +1,9 @@
 describe('Plane', function(){
-  var plane = new Plane;
+  var plane;
+
+  beforeEach(function(){
+    plane = new Plane();
+  });
 
   it('Plane should be flying', function(){
     expect(plane.isFlying).toEqual(true);
@@ -15,5 +19,18 @@ describe('Plane', function(){
     plane.fly();
     expect(plane.isFlying).toEqual(true);
   });
+
+  it('Landed plane cannot land again', function(){
+    plane.touch_down();
+    expect(function(){
+      plane.touch_down();
+    }).toThrow('Plane is already landed');
+  });
+
+  it('Flying planes cannot take off', function(){
+    expect(function(){
+      plane.fly();
+    }).toThrow('Plane is already flying');
+  })
 
 });
