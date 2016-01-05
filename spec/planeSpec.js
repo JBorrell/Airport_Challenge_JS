@@ -10,4 +10,10 @@ describe('Plane', function(){
     expect(plane.isFlying).toEqual(false);
   });
 
+  it('On fly plane should be flying', function(){
+    plane.touch_down();
+    plane.fly();
+    expect(plane.isFlying).toEqual(true);
+  });
+
 });
