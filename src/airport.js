@@ -6,14 +6,14 @@ function Airport() {
 
 Airport.prototype.land = function(plane){
   if(this._full()) {throw('Airport is full, cannot land')};
-  if(!this.open){throw('Stormy weather, no landing')};
+  if(!this.open) {throw('Stormy weather, no landing')};
   plane.touch_down();
   this.runway.push(plane);
 };
 
 Airport.prototype.take_off = function(plane){
   if(this._identify(plane) === -1){throw('No such plane!')};
-  if(!this.open){throw('Stormy weather, no flying')};
+  if(!this.open) {throw('Stormy weather, no flying')};
   plane.fly();
   this._removePlane(plane);
 };
@@ -25,7 +25,6 @@ Airport.prototype.conditions = function(weather){
 Airport.prototype.max_capacity = function(number){
   this.CAPACITY = number;
 };
-
 
 
 
