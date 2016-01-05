@@ -6,7 +6,13 @@ describe('Airport', function(){
 
   beforeEach(function(){
    airport = new Airport();
-   weather = new Weather();
+
+   weather = {
+     stormy: function(){
+       return false;
+     }
+   };
+
    plane = {
      touch_down: function(){},
      fly: function(){}
@@ -47,9 +53,8 @@ describe('Airport', function(){
   });
 
   it('if full planes should not be able to land', function(){
-    airport.land(plane);
-    // for (var i = 0; i = 20; i++){
-    //   airport.land(plane);}
+    for (var i = 0; i <= 10; i++){
+      airport.land(plane)};
     expect(function(){
       airport.land(plane);
     }).toThrow('Airport is full, cannot land');

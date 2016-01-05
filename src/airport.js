@@ -1,7 +1,7 @@
 function Airport() {
    this.runway = []
    this.open = true
-   this.CAPACITY = 1
+   this.CAPACITY = 10
 }
 
 Airport.prototype.land = function(plane){
@@ -34,7 +34,7 @@ Airport.prototype._identify = function(plane){
 };
 
 Airport.prototype._full = function(){
-  return this.runway.length >= this.CAPACITY;
+  return this.runway.length > this.CAPACITY;
 };
 
 Airport.prototype._removePlane = function(plane){
